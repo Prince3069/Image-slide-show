@@ -1,55 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Auto playing slide show</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!--Adding CSS-->
     <style>
-*{
-    padding: 0px; margin: 0px; box-sizing: border-box;
-}
-img{
-    width: 100%;
-    height: 500px;
-}
-.slideshow{
-    position: relative;
-    height: 500px;
-    width: 100%;
-    padding: 10px;
-    box-shadow: 0 0 30px black;
-}
-.slideshow > div{
-    position:absolute;
-    top: 10px;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-
-}
-
+      * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+      }
+      img {
+        width: 100%;
+        height: 600px;
+      }
+      .slideshow {
+        position: relative;
+        height: 600px;
+        width: 100%;
+        padding: 10px;
+        box-shadow: 0 0 30px black;
+      }
+      .slideshow > div {
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!---Auto playing image slide show using html,css and Javascript-->
     <div class="slideshow">
-        <div>
-            <img src="img 1.jpeg" alt="Hill 1">
-        </div>
-        <div>
-            <img src="img 2.jpeg" alt="Hill 2">
-        </div>
-        <div>
-            <img src="img 3.jpeg" alt="Hill 3">
-        </div>
-        <div>
-            <img src="img 4.jpeg" alt="Hill 4">
-        </div>
-        <div>
-            <img src="img 5.jpeg" alt="Hill 5">
-        </div>
+      <div>
+        <img src="img 1.jpeg" alt="Hill 1" />
+      </div>
+      <div>
+        <img src="img 2.jpeg" alt="Hill 2" />
+      </div>
+      <div>
+        <img src="img 3.jpeg" alt="Hill 3" />
+      </div>
+      <div>
+        <img src="img 4.jpeg" alt="Hill 4" />
+      </div>
+      <div>
+        <img src="img 5.jpeg" alt="Hill 5" />
+      </div>
     </div>
-</body>
+
+    <!---Lets add some jquery for slide show effect-->
+    <!--first adding jquery CDN link-->
+    <script>
+        $(".slideshow >div ").hide();
+  
+        setInterval(function () {
+          //set interval for setting duration of slideshow effect
+          $(".slideshow >div:first")
+            .fadeOut(1000) // 1000 mili second
+            .next()
+            .fadeIn(1000)
+            .end() //end of slideshow event
+            .appendTo(".slideshow"); //continiously running the slideshow
+        }, 3000);
+      </script>
+  </body>
 </html>
